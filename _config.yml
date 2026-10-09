@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: CPPUG Hackathon Challenge
+title: CPPUG Power Platform Hackathon
 email: communityleader@cppug.onmicrosoft.com
 description: >- # this means to ignore newlines until "baseurl:"
   The CPPUG Power Platform Hackathon is a one-day community build day at Microsoft Calgary.
