@@ -1,6 +1,6 @@
 ---
 layout: home
-title: CPPUG Hackathon Challenge
+title: Home
 description: Join the CPPUG Power Platform Hackathon at Microsoft Calgary on Saturday, October 10, 2026. Build with Power Apps and Power Automate, get matched with a team, learn from mentors, and win PPCC26 passes. RSVP on Meetup.
 hero:
   title: "CPPUG Power Platform Hackathon"
