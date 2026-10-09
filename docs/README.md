@@ -10,7 +10,8 @@ It needs `python-docx`, `qrcode`, and `pyyaml`. It writes three Word files to th
 
 | File | Where the PDF goes | Notes |
 |---|---|---|
-| Participant Pack | `assets/downloads/` and the SharePoint print pack | Public. 6 pages, print double-sided (flip on long edge), 3 sheets per team |
+| Participant Pack | `assets/downloads/` | Public. 6 pages, double-sided (flip on long edge), 3 sheets. Page 1 says host numbers are at the check-in desk |
+| Participant Pack (print, with host numbers) | SharePoint print pack only | The copy teams get on the day. Same pack, page 1 lists the host phone numbers. Built only when you pass `hosts.json` |
 | Check-in Sheet | SharePoint print pack only | Lists organizer cell numbers from `hosts.json` |
 | Judge Score Sheet | SharePoint print pack only | Paper backup for the Judge Form |
 
