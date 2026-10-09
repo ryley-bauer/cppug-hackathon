@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% if page.hero %}
+<section class="hero-header">
+    <h1>{{ page.hero.title }}</h1>
+    <p class="hero-subtitle">{{ page.hero.subtitle }}</p>
+    <div class="hero-buttons">
+        {% for b in page.hero.buttons %}
+        <a href="{{ b.url }}" class="cta-button{% if b.secondary %} secondary{% endif %}"{% if b.external %} target="_blank" rel="noopener"{% endif %}>{{ b.text }}</a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{{ content }}

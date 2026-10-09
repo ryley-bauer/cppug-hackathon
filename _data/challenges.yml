@@ -1,0 +1,50 @@
+# The prepared challenges. The website (challenges.md) and docs/build-day-of-docs.py both read this file.
+- name: Inventory Management
+  scenario: A small nonprofit lends out event gear (tables, tents, speakers). Nobody knows what is on the shelf or who has it.
+  users: Volunteers who check gear out, and the coordinator who reorders it.
+  starter: Add, edit, and view items with quantity and location. Check an item out and back in.
+  stretch: Barcode scan, a low-stock email alert, a reorder approval.
+  data: Items (name, category, quantity, location, minimum stock). Checkouts (item, person, date out, date back).
+  tools: Power Apps, SharePoint list or Dataverse, Power Automate
+- name: Time Off Management
+  scenario: A team of 15 asks for vacation by email. Requests get lost and managers double-book coverage.
+  users: Employees who ask for time off, and the manager who approves it.
+  starter: Submit a request (who, dates, reason). See my requests and their status.
+  stretch: One-step approval with Outlook or Teams, a team calendar view, remaining-days balance.
+  data: Requests (employee, start, end, type, reason, status, approver).
+  tools: Power Apps, Power Automate (approvals), Outlook, SharePoint list or Dataverse
+- name: Inspection System
+  scenario: Site supervisors fill in paper safety checklists. The office types them up days later, if at all.
+  users: Field inspectors on a phone, and the safety lead who reviews results.
+  starter: A phone-friendly checklist with pass or fail per item, notes, and an overall status.
+  stretch: Photo capture, a generated PDF report, an emailed summary, follow-up tasks for failed items.
+  data: Inspections (site, inspector, date, status). Inspection items (question, result, note, photo).
+  tools: Power Apps (phone layout), Power Automate, SharePoint or Dataverse
+- name: Expense Tracking
+  scenario: Staff send receipt photos by text message. Finance rebuilds the expense claims in a spreadsheet every month.
+  users: Staff who spend money, the approver, and the finance person.
+  starter: Submit an expense with date, category, amount, and a receipt. List my expenses.
+  stretch: Approval flow, AI Builder receipt reading, a Power BI summary by category and month.
+  data: Expenses (person, date, category, amount, receipt, status).
+  tools: Power Apps, Power Automate, AI Builder, Power BI
+- name: Room or Equipment Booking
+  scenario: A shared office has 3 meeting rooms and 2 projectors. People book them on a whiteboard that gets erased.
+  users: Anyone who needs a room or device, and the office admin.
+  starter: See what is free and request a time slot. No double bookings.
+  stretch: Confirmation email, a sign-out log for equipment, a Teams tab.
+  data: Resources (name, type, capacity). Bookings (resource, person, start, end).
+  tools: Power Apps, SharePoint list or Dataverse, Outlook
+- name: Employee Kudos
+  scenario: Managers want people to thank each other more, but thanks get lost in chat threads.
+  users: Every employee, and the people team who runs recognition.
+  starter: Send kudos to a colleague with a short message and a value or badge. See recent kudos.
+  stretch: Post each kudos to a Teams channel, a badge gallery, a monthly leaderboard in Power BI.
+  data: Kudos (from, to, message, badge, date).
+  tools: Power Apps, Power Automate, Teams, Power BI
+- name: Open Build
+  scenario: Bring your own problem. Something from work, your community, or your life.
+  users: You decide. Name a real user.
+  starter: One main task a new user can finish without help.
+  stretch: Anything useful, clever, or delightfully strange.
+  data: You decide. Sketch it in the first 30 minutes.
+  tools: Any Power Platform parts, as long as Power Platform is central

@@ -1,0 +1,129 @@
+// Performance optimizations and additional utilities
+@import 'variables';
+
+// Prevent scroll when mobile menu is open
+body.menu-open {
+  overflow: hidden;
+  
+  @media (min-width: 769px) {
+    overflow: auto;
+  }
+}
+
+// Skip link for accessibility
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: $primary-color;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 0 0 4px 4px;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Focus trap for mobile menu
+.nav-links.nav-open {
+  a:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: -2px;
+  }
+}
+
+// Improved touch targets for mobile
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Loading spinner (optional for dynamic content)
+.loading-spinner {
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--accent-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Performance: Hardware acceleration for transforms
+.cta-button,
+.tier,
+.event-card {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+// Accessibility improvements
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Enhanced focus indicators
+a:focus,
+button:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+// Print optimizations
+@page {
+  margin: 2cm;
+}
+
+@media print {
+  * {
+    color: black !important;
+    background: white !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  .page-break {
+    page-break-before: always;
+  }
+}

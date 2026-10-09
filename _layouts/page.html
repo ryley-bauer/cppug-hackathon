@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+{% if page.hero %}
+<section class="hero-header">
+    <h1>{{ page.hero.title | default: page.title }}</h1>
+    {% if page.hero.subtitle %}
+        <p>{{ page.hero.subtitle }}</p>
+    {% endif %}
+    {% if page.hero.highlight %}
+        <p class="event-highlight">{{ page.hero.highlight }}</p>
+    {% endif %}
+    {% if page.hero.cta %}
+        <div class="cta">
+            <a href="{{ page.hero.cta.url }}" class="cta-button">{{ page.hero.cta.text }}</a>
+        </div>
+    {% endif %}
+</section>
+{% endif %}
+
+<div class="content">
+    {% if page.title and page.layout != 'home' and page.hide_title != true %}
+        <section class="site-section page-header">
+            <h1 class="post-title">{{ page.title | escape }}</h1>
+            {% if page.date %}
+                <p class="post-meta">
+                    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+                </p>
+            {% endif %}
+        </section>
+    {% endif %}
+    
+    <div class="post-content">
+        {{ content }}
+    </div>
+</div>

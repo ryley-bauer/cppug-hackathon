@@ -1,0 +1,32 @@
+// CPPUG brand colors and variables (see the cppug-brand skill)
+
+$cppug-pink: #91338C;
+$cppug-blue: #5086F2;
+$cppug-purple: #4940AF;
+$cppug-yellow: #EBCC45;
+$cppug-green: #7DCF81;
+$cppug-light-blue: #8ED0F8;
+
+$primary-color: $cppug-purple;
+$secondary-color: #000000;
+$accent-color: $cppug-yellow;
+$success-color: $cppug-green;
+$background-light: #F5F5F5;
+$background-white: #FFFFFF;
+$text-color: #000000;
+$text-light: #595959;
+$heading-color: #000000;
+$border-color: #E0E0E0;
+$transition-speed: 0.3s;
+$border-radius: 8px;
+$gold-color: $cppug-yellow;
+$silver-color: #C0C0C0;
+$bronze-color: #CD7F32;
+
+// Typography: Norwester for big headings (no bold weight exists), Open Sans for everything else
+$font-stack: 'Open Sans', Calibri, 'Segoe UI', sans-serif;
+$display-font: 'Norwester', 'Trebuchet MS', sans-serif;
+
+// Layout
+$max-width: 1200px;
+$section-padding: 4rem 2rem;
