@@ -11,7 +11,7 @@ hide_title: true
     
     <p>Looking for inspiration for your hackathon project? Here are some proven project categories that work well with Microsoft Power Platform tools. Remember, the goal is to build a functional MVP that solves a real business problem!</p>
 
-    <p><strong>Want a ready-made brief?</strong> The <a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Challenge%20Case%20Studies.pdf' | relative_url }}">Challenge Case Studies (PDF)</a> describe the seven prepared challenges: the scenario, the users, a starter build, stretch ideas, and suggested data.</p>
+    <p><strong>Want a ready-made brief?</strong> The <a href="{{ '/challenges/' | relative_url }}">Challenges page</a> and pages 4 and 5 of the <a href="{{ site.pack_pdf | relative_url }}">Participant Pack (PDF)</a> describe the seven prepared challenges: the scenario, the users, a starter build, stretch ideas, and suggested data.</p>
 
     <h3>🏢 Business Process Automation</h3>
     <p><strong>Perfect for:</strong> Power Apps + Power Automate + SharePoint/Dataverse</p>

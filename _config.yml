@@ -27,6 +27,9 @@ baseurl: "/cppug-hackathon" # the subpath of your site, e.g. /blog
 url: "https://ryley-bauer.github.io" # change to https://cppug.github.io when the repo moves to the cppug account
 github_username: ryley-bauer
 
+# The one participant download (built by docs/build-day-of-docs.py)
+pack_pdf: "/assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Pack.pdf"
+
 # Build settings
 theme: minima
 plugins:

@@ -1,20 +1,31 @@
-# Public hackathon documents (Saturday, October 10, 2026)
+# Building the print documents
 
-This repo is the public package. The Meetup event page is the source of truth for public details. If a file here disagrees with it, fix the file.
+`build-day-of-docs.py` builds every print document from code, so there are no Word files to keep in sync. Run it from the repo root:
 
-Internal team documents (event plan, checklist, budget, Judge Guide, Judge Form, Volunteer Cheat Sheet, meeting notes) live in the CPPUG SharePoint site: `CPPUG - Documents/Hackathon/2026-10-10 Hackathon/Team (internal)/`. Do not add them here.
+```bash
+python docs/build-day-of-docs.py <scratch folder> "<SharePoint>/Hackathon/2026-10-10 Hackathon/Print pack/hosts.json"
+```
 
-| Source file | PDF in `../assets/downloads/` | Audience |
+It needs `python-docx`, `qrcode`, and `pyyaml`. It writes three Word files to the scratch folder (never to the repo):
+
+| File | Where the PDF goes | Notes |
 |---|---|---|
-| `CPPUG Hackathon - Participant Handout.docx` | Participant Handout | Participants: schedule, rules, rubric |
-| `CPPUG Hackathon - Know Before You Go.docx` | Know Before You Go | Participants: getting there, getting in, parking, what to bring |
-| `CPPUG Hackathon - Challenge Case Studies.docx` | Challenge Case Studies | Participants: the seven prepared challenges |
-| `CPPUG Hackathon - Team Summary Card.docx` | Team Summary Card | Teams: hand in by 1:45 PM |
+| Participant Pack | `assets/downloads/` and the SharePoint print pack | Public. 6 pages, print double-sided (flip on long edge), 3 sheets per team |
+| Check-in Sheet | SharePoint print pack only | Lists organizer cell numbers from `hosts.json` |
+| Judge Score Sheet | SharePoint print pack only | Paper backup for the Judge Form |
 
-`build-day-of-docs.py` generates the Know Before You Go, Challenge Case Studies, and Team Summary Card Word files and `../assets/images/checkin-qr.png`. It also writes two internal files to a third folder: the Check-in Sheet (it lists organizer cell numbers) and the paper Judge Score Sheet. The challenges come from `../_data/challenges.yml`, the same file the website uses. Run it from the repo root: `python docs/build-day-of-docs.py docs assets/images "<SharePoint>/Hackathon/2026-10-10 Hackathon/Print pack"` (needs `python-docx`, `qrcode`, and `pyyaml`). Never pass `docs` as the third folder. The Participant Handout is edited by hand.
+Export each Word file to PDF from Word on a machine with Norwester (TrueType copy) and Open Sans installed, then delete the Word files.
 
-Export PDFs from Word (File, Save as, PDF) on a machine with Norwester and Open Sans installed. Word does not embed the OpenType (CFF) Norwester file, so install a TrueType copy.
+## Participant Pack layout
 
-The `docs/` folder is excluded from the Jekyll site build.
+| Sheet | Front | Back |
+|---|---|---|
+| 1 | Getting there, getting in, schedule | How the day works, rules, hand-in, demo |
+| 2 | Scoring rubric (must stay on one page) | Challenges 1 to 3 |
+| 3 | Challenges 4 to 7 | Sketch area (top) and team summary card (bottom half, cut out) |
 
-The Word documents follow the `cppug-brand` skill: Norwester headings, Open Sans body, black cover banner, and the pink, blue, purple, yellow, green and light blue accent cycle on table headers.
+Cutting out the card only removes the bottom of page 5 (challenges 6 and 7), which teams no longer need at 1:45 PM. If you change the content, check that the PDF is still exactly 6 pages.
+
+The challenges come from `../_data/challenges.yml`, the same file the website uses. The site links to the pack through `pack_pdf` in `_config.yml`.
+
+Internal team documents (event plan, checklist, budget, Judge Guide, Judge Form, Volunteer Cheat Sheet, slides, meeting notes) live in SharePoint: `CPPUG - Documents/Hackathon/2026-10-10 Hackathon/Team (internal)/`. Do not add them here.

@@ -20,15 +20,15 @@ hero:
 
 <section id="participant-pack" class="site-section" data-aos="fade-up">
     <h2>Participant Pack</h2>
-    <p style="text-align: center;">Everything you need for the day. Read Know Before You Go tonight. The rest is printed on your table tomorrow.</p>
+    <p style="text-align: center;">One document for the whole day. Read page 1 tonight. Each team gets a printed copy on its table tomorrow.</p>
+    <p style="text-align: center;"><a href="{{ site.pack_pdf | relative_url }}" class="cta-button"><i class="fas fa-file-pdf"></i> Download the Participant Pack (PDF, 6 pages)</a></p>
     <div class="pack-grid">
-        {% for doc in site.data.pack %}
-        <div class="pack-card c{{ forloop.index0 | modulo: 6 }}">
-            <h3>{{ doc.title }}</h3>
-            <p>{{ doc.summary }}</p>
-            <a class="pack-link" href="{{ '/assets/downloads/' | append: doc.file | relative_url | replace: ' ', '%20' }}">Download PDF{% if doc.pages %} ({{ doc.pages }}){% endif %}</a>
-            {% if doc.page %}<a class="pack-link" href="{{ doc.page | relative_url }}">Read it on the web</a>{% endif %}
-        </div>
+        {% for part in site.data.pack %}
+        <a class="pack-card c{{ forloop.index0 | modulo: 6 }}" href="{{ part.link | relative_url }}" style="text-decoration: none;">
+            <h3>{{ part.title }}</h3>
+            <p>{{ part.summary }}</p>
+            <span class="pack-link">{{ part.pages }}</span>
+        </a>
         {% endfor %}
     </div>
 </section>
@@ -136,7 +136,7 @@ hero:
     </div>
 
     <div class="cta" style="text-align: center; margin-top: 2rem;">
-        <a href="{{ '/complete-rules/' | relative_url }}" class="cta-button">View Complete Rules & FAQ</a>
+        <a href="{{ '/faq/' | relative_url }}" class="cta-button">View Complete Rules & FAQ</a>
     </div>
 </section>
 
@@ -152,7 +152,7 @@ hero:
         <li><strong>3:15 to 3:40 PM, Judging and networking:</strong> Judges score while everyone mingles.</li>
         <li><strong>3:40 to 4:00 PM, Awards and closing:</strong> Winners, photos, and thanks.</li>
     </ul>
-    <p>Want the full rules and the scoring rubric? <a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Handout.pdf' | relative_url }}">Download the Participant Handout (PDF)</a>.</p>
+    <p>Want the full rules and the scoring rubric? <a href="{{ site.pack_pdf | relative_url }}">Download the Participant Pack (PDF)</a>.</p>
 </section>
 
 <section id="know-before-you-go" class="site-section" data-aos="fade-up">
@@ -166,13 +166,7 @@ hero:
         <li><strong>Bring:</strong> A laptop and charger. Use your work or school environment only if your organization allows it. No environment? Sign up for the free <a href="https://aka.ms/PowerAppsDevPlan" target="_blank" rel="noopener">Power Apps Developer Plan</a> before you arrive.</li>
         <li><strong>Check in:</strong> Fill in the <a href="https://forms.cloud.microsoft/r/B4kKv3YLdp" target="_blank" rel="noopener">registration form</a> tonight, or scan the QR code at the door.</li>
     </ul>
-    <h3>Downloads</h3>
-    <ul>
-        <li><a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Know%20Before%20You%20Go.pdf' | relative_url }}">Know Before You Go (PDF, 1 page)</a>: getting there, getting in, what to bring</li>
-        <li><a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Challenge%20Case%20Studies.pdf' | relative_url }}">Challenge Case Studies (PDF)</a>: the seven prepared challenges</li>
-        <li><a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Handout.pdf' | relative_url }}">Participant Handout (PDF)</a>: rules and the scoring rubric</li>
-        <li><a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Team%20Summary%20Card.pdf' | relative_url }}">Team Summary Card (PDF)</a>: hand it in by 1:45 PM</li>
-    </ul>
+    <p>All of this is on page 1 of the <a href="{{ site.pack_pdf | relative_url }}">Participant Pack (PDF)</a>.</p>
 </section>
 
 <section id="prizes" class="site-section" data-aos="fade-up">
@@ -185,9 +179,12 @@ hero:
 </section>
 
 <section id="sponsors" class="site-section" data-aos="fade-up">
-    <h2>Thank You to Our Hosts</h2>
+    <h2>Thank You to Our Sponsors</h2>
     <p>Microsoft Calgary hosts the hackathon and provides the PPCC26 passes. Thank you to our sponsors, Bauer Automate and Gravity Union, and to our food sponsor for breakfast and lunch.</p>
     <div class="sponsor-logos" style="display: flex; gap: 2rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center;">
+        <a href="https://www.microsoft.com/" target="_blank" rel="noopener" title="Microsoft: venue host and PPCC26 passes">
+            <img src="{{ '/assets/images/sponsors/microsoft.svg' | relative_url }}" alt="Microsoft Logo" style="height: 40px;" loading="lazy">
+        </a>
         <a href="https://www.bauerautomate.com/" target="_blank" rel="noopener">
             <img src="{{ '/assets/images/sponsors/bauer-automate.png' | relative_url }}" alt="Bauer Automate Logo" style="height: 60px;" loading="lazy">
         </a>

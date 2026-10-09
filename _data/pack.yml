@@ -1,18 +1,21 @@
-# The public participant pack. Files live in assets/downloads/.
-- title: Know Before You Go
-  summary: Getting there, getting in (the building is locked on Saturday), parking, transit, and what to bring.
-  file: CPPUG Hackathon - Know Before You Go.pdf
-  pages: 1 page
-- title: Participant Handout
-  summary: The schedule, the rules, and the full scoring rubric with every score anchor.
-  file: CPPUG Hackathon - Participant Handout.pdf
-  pages: 3 pages
-- title: Challenge Case Studies
-  summary: Seven prepared challenges, each with a scenario, users, a starter build, stretch ideas, and suggested data.
-  file: CPPUG Hackathon - Challenge Case Studies.pdf
-  pages: 2 pages
-  page: /challenges/
-- title: Team Summary Card
-  summary: What your team hands in by 1:45 PM. Judges score your demo against it.
-  file: CPPUG Hackathon - Team Summary Card.pdf
-  pages: 1 page
+# What is inside the one Participant Pack PDF. Each card links to the web version.
+- title: Getting there and getting in
+  summary: Parking, transit, the locked-building plan, what to bring, and the schedule.
+  pages: Page 1
+  link: /#know-before-you-go
+- title: How the day works and the rules
+  summary: Teams, planning first, prizes, the rules, what to hand in, and your demo.
+  pages: Page 2
+  link: /faq/
+- title: How you are scored
+  summary: The full rubric with every score anchor, on one page.
+  pages: Page 3
+  link: /faq/
+- title: Seven challenges
+  summary: A scenario, users, a starter build, stretch ideas, and data for each.
+  pages: Pages 4 and 5
+  link: /challenges/
+- title: Sketch area and team card
+  summary: Sketch your screens, then cut out the card and hand it in by 1:45 PM.
+  pages: Page 6
+  link: /#participant-pack

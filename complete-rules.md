@@ -55,7 +55,7 @@ hide_title: true
         <li><strong>Design and User Experience (25%)</strong> - Did the team plan before building (how they chose the idea, a sketch or mock-up, screens that match it) and is the result easy to use? Score x 5 points.</li>
         <li><strong>Presentation Quality (10%)</strong> - Did the team cover the problem, a live demo, the parts used, and what they learned? Score x 2 points.</li>
     </ul>
-    <p>The two highest average totals are the winning teams. Ties go to the higher Effective Use points, then the higher Functionality points. <a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Handout.pdf' | relative_url }}">Download the Participant Handout (PDF)</a> to see the full rubric.
+    <p>The two highest average totals are the winning teams. Ties go to the higher Effective Use points, then the higher Functionality points. <a href="{{ site.pack_pdf | relative_url }}">Download the Participant Handout (PDF)</a> to see the full rubric.
 
     <p><strong>Q: What are the prizes?</strong><br>
     A: There are two individual Power Platform Community Conference 2026 (PPCC26) conference passes, provided by Microsoft. Travel and accommodation are not included. Judges choose the two people from those who could attend. Runners-up receive Lego Clippy mascots.</p>

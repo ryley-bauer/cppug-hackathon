@@ -8,7 +8,7 @@ hide_title: true
 
 <section class="site-section">
     <h2>Pick a Challenge</h2>
-    <p style="text-align: center;">Each challenge fits a four-hour build. Build the starter version first and add stretch ideas only when it works. Prefer your own idea? Choose Open Build. <a href="{{ '/assets/downloads/CPPUG%20Hackathon%20-%20Challenge%20Case%20Studies.pdf' | relative_url }}">Download the printable version (PDF)</a>.</p>
+    <p style="text-align: center;">Each challenge fits a four-hour build. Build the starter version first and add stretch ideas only when it works. Prefer your own idea? Choose Open Build. <a href="{{ site.pack_pdf | relative_url }}">Printable version: pages 4 and 5 of the Participant Pack (PDF)</a>.</p>
     <div class="pack-grid">
         {% for c in site.data.challenges %}
         <div class="pack-card c{{ forloop.index0 | modulo: 6 }}">

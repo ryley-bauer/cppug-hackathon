@@ -6,20 +6,15 @@ The public package for the Calgary Power Platform User Group (CPPUG) hackathon a
 - **RSVP and updates:** [Meetup event page](https://www.meetup.com/calgary-power-platform-user-group/events/315727499/). Meetup is the source of truth for date, time, venue, and prizes.
 - **Contact:** communityleader@cppug.onmicrosoft.com, or message us in the Meetup event chat.
 
-## Downloads
+## Download
 
-| Document | What it covers |
-|---|---|
-| [Know Before You Go](assets/downloads/CPPUG%20Hackathon%20-%20Know%20Before%20You%20Go.pdf) | Getting there, getting in, parking, what to bring |
-| [Participant Handout](assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Handout.pdf) | Schedule, rules, and the scoring rubric |
-| [Challenge Case Studies](assets/downloads/CPPUG%20Hackathon%20-%20Challenge%20Case%20Studies.pdf) | The seven prepared challenges |
-| [Team Summary Card](assets/downloads/CPPUG%20Hackathon%20-%20Team%20Summary%20Card.pdf) | What each team hands in by 1:45 PM |
+[**Participant Pack (PDF, 6 pages)**](assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Pack.pdf): everything for the day in one document. Getting there and getting in, the schedule, rules, the scoring rubric, the seven challenges, a sketch area, and the team summary card to cut out. It prints on 3 sheets, double-sided.
 
 ## What is in this repo
 
 - The Jekyll site (`index.markdown`, `challenges.md`, `complete-rules.md`, `project-ideas.md`, `_data/`, `_layouts/`, `_includes/`, `_sass/`), published with GitHub Pages.
-- `assets/downloads/`: the PDFs above.
-- `docs/`: the Word sources for those PDFs and the script that generates most of them. See `docs/README.md`.
+- `assets/downloads/`: the Participant Pack PDF.
+- `docs/`: the script that builds the pack. See `docs/README.md`.
 
 Organizer working documents live in the CPPUG SharePoint site, not here.
 
