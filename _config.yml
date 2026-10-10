@@ -70,6 +70,7 @@ navigation:
 #
 exclude:
   - docs/
+  - cppug-site/
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/

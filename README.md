@@ -16,7 +16,8 @@ The public package for the Calgary Power Platform User Group (CPPUG) hackathon a
 
 - The Jekyll site (`index.markdown`, `challenges.md`, `complete-rules.md`, `project-ideas.md`, `_data/`, `_layouts/`, `_includes/`, `_sass/`), published with GitHub Pages.
 - `assets/downloads/`: the Participant Pack and the Volunteer and Judge Pack.
-- `docs/`: the script that builds the pack. See `docs/README.md`.
+- `docs/`: the script that builds the packs. See `docs/README.md`.
+- `cppug-site/`: the source of the main CPPUG landing page at https://cppug.ca (a Cloudflare Worker). See `cppug-site/README.md`.
 
 Organizer working documents live in the CPPUG SharePoint site, not here.
 
