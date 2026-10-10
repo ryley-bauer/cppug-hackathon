@@ -7,7 +7,7 @@ Writes three Word files to <work_dir> (a scratch folder, not the repo):
   - CPPUG Hackathon - Participant Pack.docx   public, 6 pages, duplex
   - ... Participant Pack (print, with host numbers).docx   same pack with host phone numbers (only with hosts.json)
   - CPPUG Hackathon - Check-in Sheet.docx      internal, lists organizer phone numbers
-  - CPPUG Hackathon - Judge Score Sheet.docx   internal
+  - CPPUG Hackathon - Volunteer and Judge Pack.docx   public, 3 pages (volunteer guide, judge guide, score sheet)
 and the check-in QR code to assets/images/checkin-qr.png.
 Export each one to PDF from Word. The pack PDF goes to assets/downloads/ and the
 SharePoint print pack; the other two go to the print pack only.
@@ -163,6 +163,44 @@ def hosts_strip(d, size=10):
         run(c.paragraphs[0], n, size, bold=True); c.paragraphs[0].add_run().add_break(); run(c.paragraphs[0], ph, size)
 
 
+# ---------------------------------------------------------------- Rubric (shared by both packs; the site, Judge Form, and event plan must match)
+RUBRIC = [
+    ("Functionality (30%, score x 6 points)",
+     "Does the solution do what the team said it would do? Judges compare the live demo with the core features on the team summary card.",
+     ["All listed core features work live. No errors. The team also shows one edge case handled well (for example, an empty field or a wrong entry).",
+      "All listed core features work live. One small glitch at most.",
+      "Most listed core features work live (for example, 2 of 3). Some bugs.",
+      "Fewer than half of the listed core features work live (for example, 1 of 3). The team needs workarounds.",
+      "No core feature works live, or the demo fails."]),
+    ("Effective use of Power Platform (35%, score x 7 points)",
+     "Did the team pick the right Power Platform parts and use them well? Judges count only what the demo shows working. Parts are Power Apps, Power Automate, "
+     "Power BI, Power Pages, Copilot Studio, AI Builder, a data store (Dataverse or SharePoint list), and connectors (such as Outlook or Teams).",
+     ["3 or more parts work together as one solution. The team explains why they chose each part. At least one platform strength is used (for example, approvals, shared data, a connector, or AI).",
+      "3 or more parts work together and each one fits the problem.",
+      "2 parts, and both fit the problem (for example, an app plus a flow).",
+      "1 part with basic use only, or 2 parts where one does not fit.",
+      "No Power Platform part is central, or the tools do not fit the problem."]),
+    ("Design and user experience (25%, score x 5 points)",
+     "Did the team think before they built, and is the result easy to use? Judges count how many of these 5 items the team shows: (A) Idea: how they chose it, "
+     "such as the user need or the options they weighed. (B) Plan: a sketch, wireframe, mock-up, or flow diagram made before building (paper, whiteboard photo, "
+     "or sticky notes all count). (C) Match: the built screens follow the plan, and the team says what changed and why. (D) Use: a new user could finish the main "
+     "task with no explanation. (E) Polish: the layout is consistent and the text is easy to read.",
+     ["All 5 items shown (A, B, C, D, E).", "4 of the 5 items shown.", "3 of the 5 items shown.", "2 of the 5 items shown.", "1 item shown, or none."]),
+    ("Presentation quality (10%, score x 2 points)",
+     "Did the team cover the 4 required parts: (1) the problem and who it helps, (2) a live demo, (3) the Power Platform parts used, (4) what the team learned?",
+     ["All 4 parts covered, inside the time limit, and the team answers questions clearly.",
+      "All 4 parts covered, inside the time limit. Answers to questions are adequate.",
+      "3 of the 4 parts covered.", "2 of the 4 parts covered, or the team cannot answer most questions.", "1 part or none covered."]),
+]
+
+
+def rubric_tables(d):
+    for i, (title, question, anchors) in enumerate(RUBRIC):
+        h(d, title, i, size=11, before=4)
+        p = para(d, question, size=7.5); p.runs[0].italic = True
+        table(d, [["Score", "What the judge sees"]] + [[str(5 - k), a] for k, a in enumerate(anchors)], [Inches(0.6), Inches(6.7)], i, size=7.5)
+
+
 # ---------------------------------------------------------------- Participant Pack (6 pages, 3 sheets duplex)
 # Sheet 1: p1 logistics + schedule | p2 how it works, rules, hand-in, demo
 # Sheet 2: p3 scoring rubric       | p4 challenges 1 to 3
@@ -244,38 +282,7 @@ def build_pack(filename, with_hosts):
     # p3: rubric on one side
     h(d, "How you are scored", 0, size=14, before=0)
     para(d, "Each judge scores each team on 4 criteria with a whole number from 1 to 5. Each score turns into points. The most points possible is 100 (30 + 35 + 25 + 10).", size=8.5)
-    RUBRIC = [
-        ("Functionality (30%, score x 6 points)",
-         "Does the solution do what the team said it would do? Judges compare the live demo with the core features on the team summary card.",
-         ["All listed core features work live. No errors. The team also shows one edge case handled well (for example, an empty field or a wrong entry).",
-          "All listed core features work live. One small glitch at most.",
-          "Most listed core features work live (for example, 2 of 3). Some bugs.",
-          "Fewer than half of the listed core features work live (for example, 1 of 3). The team needs workarounds.",
-          "No core feature works live, or the demo fails."]),
-        ("Effective use of Power Platform (35%, score x 7 points)",
-         "Did the team pick the right Power Platform parts and use them well? Judges count only what the demo shows working. Parts are Power Apps, Power Automate, "
-         "Power BI, Power Pages, Copilot Studio, AI Builder, a data store (Dataverse or SharePoint list), and connectors (such as Outlook or Teams).",
-         ["3 or more parts work together as one solution. The team explains why they chose each part. At least one platform strength is used (for example, approvals, shared data, a connector, or AI).",
-          "3 or more parts work together and each one fits the problem.",
-          "2 parts, and both fit the problem (for example, an app plus a flow).",
-          "1 part with basic use only, or 2 parts where one does not fit.",
-          "No Power Platform part is central, or the tools do not fit the problem."]),
-        ("Design and user experience (25%, score x 5 points)",
-         "Did the team think before they built, and is the result easy to use? Judges count how many of these 5 items the team shows: (A) Idea: how they chose it, "
-         "such as the user need or the options they weighed. (B) Plan: a sketch, wireframe, mock-up, or flow diagram made before building (paper, whiteboard photo, "
-         "or sticky notes all count). (C) Match: the built screens follow the plan, and the team says what changed and why. (D) Use: a new user could finish the main "
-         "task with no explanation. (E) Polish: the layout is consistent and the text is easy to read.",
-         ["All 5 items shown (A, B, C, D, E).", "4 of the 5 items shown.", "3 of the 5 items shown.", "2 of the 5 items shown.", "1 item shown, or none."]),
-        ("Presentation quality (10%, score x 2 points)",
-         "Did the team cover the 4 required parts: (1) the problem and who it helps, (2) a live demo, (3) the Power Platform parts used, (4) what the team learned?",
-         ["All 4 parts covered, inside the time limit, and the team answers questions clearly.",
-          "All 4 parts covered, inside the time limit. Answers to questions are adequate.",
-          "3 of the 4 parts covered.", "2 of the 4 parts covered, or the team cannot answer most questions.", "1 part or none covered."]),
-    ]
-    for i, (title, question, anchors) in enumerate(RUBRIC):
-        h(d, title, i, size=11, before=4)
-        p = para(d, question, size=7.5); p.runs[0].italic = True
-        table(d, [["Score", "What the judge sees"]] + [[str(5 - k), a] for k, a in enumerate(anchors)], [Inches(0.6), Inches(6.7)], i, size=7.5)
+    rubric_tables(d)
     para(d, [("Winners. ", True), ("Judges score alone and compare your demo with your team summary card. Organizers average the totals. The two highest averages are the "
               "winning teams. Tie: higher Effective use points win, then higher Functionality points, then the judges decide.", False)], size=8).paragraph_format.space_before = Pt(5)
     page_break(d)
@@ -357,13 +364,63 @@ for n in range(2):
         cut_line(d)
 d.save(os.path.join(WORK, "CPPUG Hackathon - Check-in Sheet.docx"))
 
-# ---------------------------------------------------------------- Judge score sheet (internal, paper backup for the Judge Form)
-d = new_doc(landscape=True)
-d.sections[0].left_margin = d.sections[0].right_margin = Inches(0.5)
-banner(d, "Judge score sheet", "Paper backup for the Judge Form  |  CPPUG Power Platform Hackathon  |  October 10, 2026")
+# ---------------------------------------------------------------- Volunteer and Judge Pack (public, 3 pages)
+# p1 volunteer guide | p2 judge guide (same rubric as the Participant Pack) | p3 landscape score sheet, one per judge
+# Roles only, no names or phone numbers: those are on the check-in sheet. No building-security details.
+d = new_doc(numbered=True)
+banner(d, "Volunteer and judge pack", "CPPUG Power Platform Hackathon  |  Saturday, October 10, 2026  |  Arrive 8:30 AM for the briefing")
+h(d, "Volunteers: your job in one line", 0, before=2)
+para(d, "Greet people like they belong. Guide teams, but do not build for them. Keep the room tidy. Look for anyone who seems lost, alone, or stuck. "
+        "Ask an organizer when unsure.", size=9.5)
+h(d, "The day", 1)
+table(d, [["Time", "What happens"],
+          ["8:30 AM", "Volunteer briefing. Set up tables, signs, power, and the check-in desk. Test Wi-Fi and the projector."],
+          ["9:00 AM", "Doors open. Bring people up from the lobby. Check-in, name tags, and free-agent matching."],
+          ["9:30 to 9:55 AM", "Welcome, rules, and challenge briefing."],
+          ["10:00 AM", "Build starts. Mentors roam. Free agents get matched."],
+          ["12:30 PM", "Lunch. Teams can eat at their tables."],
+          ["1:45 to 2:00 PM", "Teams hand in summary cards and set up demos. Judges meet for 10 minutes."],
+          ["2:00 to 3:40 PM", "Team demos until 3:15, then judges score while everyone networks. Collect score sheets."],
+          ["3:40 to 4:00 PM", "Awards, photos, and closing."],
+          ["4:00 PM", "Cleanup. Clear tables, signs, and trash. Check for lost items. Leave the room spotless."]],
+      [Inches(1.4), Inches(5.9)], 1, size=8.5)
+h(d, "Role cards", 2)
+table(d, [["Role", "Before doors open (8:30 to 9:00)", "During the event"],
+          ["Door and elevator", "Learn the door plan at the briefing.", "Bring people up from the lobby. Let people back in after washroom trips. Never prop the door open."],
+          ["Setup and cleanup", "Tables, chairs, signs, check-in desk, power strips, projector test.", "Fix room issues. At 4:00 PM: clear tables, trash, signs, and lost items."],
+          ["Check-in", "Registration list, name tags, role labels, free-agent area.", "Greet people. Note no-shows. Send free agents to matching. Ask each competitor quietly: "
+           "'If you won a PPCC26 pass, could you book travel within about a week?' Mark yes on the list."],
+          ["Team matcher", "List of free agents with skill levels.", "Mix skill levels. Ask advanced makers if they will anchor a team of beginners."],
+          ["Mentor", "Read the challenges and the rules in the Participant Pack.", "Roam. Ask 'What are you trying to do?' Point to the next step. Do not build it for them."],
+          ["Food lead", "Confirm meal times and dietary options. Set up the food table.", "Meet the delivery. Keep the table clean and stocked."],
+          ["Timekeeper", "Demo order sheet. A timer the presenters can see.", "Announce time checks. Warn each team 2 minutes before the end of its slot."],
+          ["Judging assistant", "Print score sheets. Open the Judge Form link.", "Hand out sheets, collect them, and tell judges which team is next."]],
+      [Inches(1.4), Inches(2.4), Inches(3.5)], 2, size=8.5)
+h(d, "Who to ask", 3)
+table(d, [["Problem", "Go to"],
+          ["Safety, conduct, or anyone who feels unwelcome", "An event lead, right away"],
+          ["Wi-Fi, power, projector, or building access", "The Microsoft liaison"],
+          ["Tenant or login problem, or a challenge question", "The technical lead"]],
+      [Inches(3.6), Inches(3.7)], 3, size=8.5)
+para(d, "Organizer names and phone numbers are on the check-in sheet at the desk. Fill in at the 8:30 briefing: "
+        "Wi-Fi ____________________   Lunch spot ______________   Volunteer channel ______________", size=8.5).paragraph_format.space_before = Pt(4)
+page_break(d)
+
+# p2: judge guide
+h(d, "Judges: how to score", 0, size=14, before=0)
+para(d, "Score each team on 4 criteria with a whole number from 1 to 5. Points = score x 6, 7, 5, and 2. The most points possible is 100. "
+        "Teams have the same rubric on page 3 of their Participant Pack.", size=8.5)
+rubric_tables(d)
+
+# p3: score sheet, landscape, one per judge (a new section starts a new page)
+sec = d.add_section()
+sec.orientation = WD_ORIENT.LANDSCAPE; sec.page_width, sec.page_height = Inches(11), Inches(8.5)
+sec.left_margin = sec.right_margin = Inches(0.5)
+h(d, "Judge score sheet: one per judge, all teams", 0, size=14, before=0)
 para(d, [("Judge name: ______________________________     ", True),
-         ("Score each criterion with a whole number from 1 to 5. Score alone and do not discuss scores until all are in. Skip any team you have a conflict "
-          "with (you work with, manage, or coached a member). Judge what works live, against the team summary card.", False)], size=8.5)
+         ("At 1:45 PM, judges meet for 10 minutes to agree on how to read 'core features', 'parts used', and what counts as a plan. Read each team's summary card "
+          "before its demo and score what works live. Score alone and do not discuss scores until all are in. Skip any team you have a conflict with "
+          "(work tie, personal tie, or heavy mentoring) and tell an organizer. Add a short reason to any 1 or 5 in the notes column.", False)], size=8.5)
 table(d, [["Criterion", "5", "4", "3", "2", "1"],
           ["Functionality: 30%, score x 6", "All listed core features work live, no errors, plus one edge case handled well",
            "All listed core features work live. One small glitch at most", "Most core features work (for example 2 of 3). Some bugs",
@@ -384,5 +441,5 @@ table(d, SC, [Inches(0.3), Inches(1.7), Inches(0.75), Inches(0.85), Inches(0.85)
 para(d, [("Total = Function x 6 + Effective use x 7 + Design x 5 + Presentation x 2. ", True),
          ("Hand this sheet to an organizer when demos end. Organizers average the totals. Ties: higher Effective use points, then Functionality points, "
           "then the judges decide. Passes are placed after scoring, from the pass-eligible list.", False)], size=8)
-d.save(os.path.join(WORK, "CPPUG Hackathon - Judge Score Sheet.docx"))
+d.save(os.path.join(WORK, "CPPUG Hackathon - Volunteer and Judge Pack.docx"))
 print("built")

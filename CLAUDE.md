@@ -23,11 +23,11 @@ Keep the rules in the skill current. This file only points to it.
 See `docs/README.md` for the file list. Key rules:
 
 - `docs/` is excluded from the Jekyll build. Public downloads go in `assets/downloads/`.
-- This repo is the public package. Internal team docs (event plan, checklist, budget, Judge Guide, Judge Form, Volunteer Cheat Sheet) live in SharePoint: `CPPUG - Documents/Hackathon/2026-10-10 Hackathon/Team (internal)/`. Never add them back here.
-- The rubric (criteria, weights, points, anchors) lives in four places: the Participant Pack (page 3, built by `docs/build-day-of-docs.py`), and the Judge Guide, the Judge Form import file, and `event-plan.md` (SharePoint). It also appears on the site (`index.markdown`, `complete-rules.md`). Change all of them together. Weights are 30, 35, 25, 10. Points are score x 6, 7, 5, 2.
-- The rubric must fit on one printed side in the Participant Pack and in the Judge Guide. The cheat sheet must stay one page.
+- This repo is the public package. Internal team docs (event plan, checklist, budget, Judge Form import, slides) live in SharePoint: `CPPUG - Documents/Hackathon/2026-10-10 Hackathon/Team (internal)/`. Never add them back here.
+- The rubric (criteria, weights, points, anchors) lives in four places: the `RUBRIC` in `docs/build-day-of-docs.py` (page 3 of the Participant Pack and page 2 of the Volunteer and Judge Pack), the Judge Form import file, and `event-plan.md` (SharePoint). It also appears on the site (`index.markdown`, `complete-rules.md`). Change all of them together. Weights are 30, 35, 25, 10. Points are score x 6, 7, 5, 2.
+- The rubric must fit on one printed side in both packs. The volunteer guide must stay one page.
 - The Judge Form import file stays plain text on purpose (Microsoft Forms Quick import).
-- The Participant Pack is the only public download. It must stay exactly 6 pages for duplex printing. After you change it, export a new PDF to `assets/downloads/`.
+- There are two public downloads: the Participant Pack (exactly 6 pages, for duplex printing) and the Volunteer and Judge Pack (3 pages). After you change either one, check the page count and export a new PDF to `assets/downloads/`.
 
 ## Writing rules
 

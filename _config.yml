@@ -29,6 +29,7 @@ github_username: ryley-bauer
 
 # The one participant download (built by docs/build-day-of-docs.py)
 pack_pdf: "/assets/downloads/CPPUG%20Hackathon%20-%20Participant%20Pack.pdf"
+team_pdf: "/assets/downloads/CPPUG%20Hackathon%20-%20Volunteer%20and%20Judge%20Pack.pdf"
 
 # Build settings
 theme: minima

@@ -22,6 +22,7 @@ hero:
     <h2>Participant Pack</h2>
     <p style="text-align: center;">One document for the whole day. Read page 1 tonight. Each team gets a printed copy on its table tomorrow.</p>
     <p style="text-align: center;"><a href="{{ site.pack_pdf | relative_url }}" class="cta-button"><i class="fas fa-file-pdf"></i> Download the Participant Pack (PDF, 6 pages)</a></p>
+    <p style="text-align: center;">Volunteering, mentoring, or judging? Read the <a href="{{ site.team_pdf | relative_url }}">Volunteer and Judge Pack (PDF, 3 pages)</a>: role cards, the judging rubric, and the score sheet.</p>
     <div class="pack-grid">
         {% for part in site.data.pack %}
         <a class="pack-card c{{ forloop.index0 | modulo: 6 }}" href="{{ part.link | relative_url }}" style="text-decoration: none;">
@@ -317,6 +318,9 @@ hero:
     <div class="cta" style="text-align: center; margin-top: 3rem;">
         <a href="https://forms.office.com/r/CSB1VHXqjx" target="_blank" class="cta-button">
             <i class="fas fa-hand-heart"></i> Sign Up to Volunteer
+        </a>
+        <a href="{{ site.team_pdf | relative_url }}" class="cta-button">
+            <i class="fas fa-file-pdf"></i> Volunteer and Judge Pack
         </a>
     </div>
 </section>
