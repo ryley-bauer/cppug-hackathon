@@ -181,11 +181,12 @@ hero:
 
 <section id="sponsors" class="site-section" data-aos="fade-up">
     <h2>Thank You to Our Sponsors</h2>
-    <p>Microsoft Calgary hosts the hackathon and provides the PPCC26 passes. Thank you to our sponsors, Bauer Automate and Gravity Union, and to our food sponsor for breakfast and lunch.</p>
+    <p>Microsoft Calgary hosts the hackathon and provides the PPCC26 passes. Thank you to our sponsors, Bauer Automate and Gravity Union, and to Egg Club (downtown location) for the lunch sandwiches.</p>
     <div class="sponsor-logos" style="display: flex; gap: 2rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center;">
         <a href="https://www.microsoft.com/" target="_blank" rel="noopener" title="Microsoft: venue host and PPCC26 passes">
             <img src="{{ '/assets/images/sponsors/microsoft.svg' | relative_url }}" alt="Microsoft Logo" style="height: 40px;" loading="lazy">
         </a>
+        <img src="{{ '/assets/images/sponsors/egg-club.png' | relative_url }}" alt="Egg Club Logo" title="Egg Club: lunch sandwiches" style="height: 70px;" loading="lazy">
         <a href="https://www.bauerautomate.com/" target="_blank" rel="noopener">
             <img src="{{ '/assets/images/sponsors/bauer-automate.png' | relative_url }}" alt="Bauer Automate Logo" style="height: 60px;" loading="lazy">
         </a>
