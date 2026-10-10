@@ -31,7 +31,7 @@ HAS_HOSTS = len(sys.argv) > 2
 HOSTS = json.load(open(sys.argv[2], encoding="utf-8")) if HAS_HOSTS else [["[HOST NAME]", "[PHONE]"]] * 3
 CASES = yaml.safe_load(open(os.path.join(REPO, "_data", "challenges.yml"), encoding="utf-8"))
 FORM = "https://forms.cloud.microsoft/r/B4kKv3YLdp"
-SITE = "ryley-bauer.github.io/cppug-hackathon"
+SITE = "hackathon.cppug.ca"
 
 BLACK = RGBColor(0, 0, 0); WHITE = RGBColor(0xFF, 0xFF, 0xFF); GREY = RGBColor(0x59, 0x59, 0x59)
 ACC = ["91338C", "5086F2", "4940AF", "EBCC45", "7DCF81", "8ED0F8"]

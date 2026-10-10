@@ -23,8 +23,8 @@ email: communityleader@cppug.onmicrosoft.com
 description: >- # this means to ignore newlines until "baseurl:"
   The CPPUG Power Platform Hackathon is a one-day community build day at Microsoft Calgary.
   Team up, build with Power Platform, demo your work, and win PPCC26 passes.
-baseurl: "/cppug-hackathon" # the subpath of your site, e.g. /blog
-url: "https://ryley-bauer.github.io" # change to https://cppug.github.io when the repo moves to the cppug account
+baseurl: "" # served from the root of hackathon.cppug.ca # the subpath of your site, e.g. /blog
+url: "https://hackathon.cppug.ca"
 github_username: ryley-bauer
 
 # The one participant download (built by docs/build-day-of-docs.py)

@@ -2,7 +2,7 @@
 
 The public package for the Calgary Power Platform User Group (CPPUG) hackathon at Microsoft Calgary on Saturday, October 10, 2026.
 
-- **Website:** https://ryley-bauer.github.io/cppug-hackathon/
+- **Website:** https://hackathon.cppug.ca/
 - **RSVP and updates:** [Meetup event page](https://www.meetup.com/calgary-power-platform-user-group/events/315727499/). Meetup is the source of truth for date, time, venue, and prizes.
 - **Contact:** communityleader@cppug.onmicrosoft.com, or message us in the Meetup event chat.
 
@@ -27,4 +27,4 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Then open http://localhost:4000/cppug-hackathon/.
+Then open http://localhost:4000/.
