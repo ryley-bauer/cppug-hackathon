@@ -154,6 +154,16 @@ def box(d, height, label):
     run(t.rows[0].cells[0].paragraphs[0], label, 8, color=GREY)
 
 
+def qr_row(d, text):
+    """Small check-in QR code with its instructions beside it."""
+    t = d.add_table(rows=1, cols=2); t.alignment = WD_TABLE_ALIGNMENT.CENTER; t.autofit = False
+    a, b = t.rows[0].cells
+    a.width, b.width = Inches(1.0), Inches(6.3)
+    a.paragraphs[0].add_run().add_picture(QR, width=Inches(0.85))
+    b.vertical_alignment = 1  # center
+    run(b.paragraphs[0], text, 9, bold=True)
+
+
 def hosts_strip(d, size=10):
     t = d.add_table(rows=1, cols=len(HOSTS) + 1); t.alignment = WD_TABLE_ALIGNMENT.CENTER
     cells = t.rows[0].cells
@@ -215,7 +225,7 @@ def build_pack(filename, with_hosts):
     d = new_doc(numbered=True)
 
     # p1
-    banner(d, "Participant pack", "CPPUG Power Platform Hackathon  |  Saturday, October 10, 2026  |  9:00 AM to 4:00 PM  |  Microsoft Calgary")
+    banner(d, "Participant pack", "CPPUG Power Platform Hackathon  |  Saturday, October 10, 2026  |  9:00 AM to 4:00 PM")
     para(d, "CPPUG means Calgary Power Platform User Group. Keep this pack on your table all day. Page 6 is your team summary card: cut it out and hand it in by 1:45 PM.")
     h(d, "Getting there and getting in", 0)
     para(d, [("Microsoft Calgary Office, 110 9 Ave SW, ", True), ("in the Le Germain office tower across 9 Avenue from the Calgary Tower.", False)])
@@ -229,11 +239,12 @@ def build_pack(filename, with_hosts):
         ["CTrain", "7 Avenue stations at Centre Street or 1 Street SW, a 5 minute walk", "Regular Calgary Transit fare"],
     ], [Inches(2.3), Inches(3.2), Inches(1.8)], 2, size=8.5)
     h(d, "Before you arrive", 1)
-    bullet(d, [("Check in: ", True), (f"fill in the registration form ({FORM}) or scan the QR code at the door. We ask your skill level (1 to 5) to build balanced teams.", False)])
+    qr_row(d, "Check in: scan this code, or fill in the registration form at " + FORM.replace("https://", "")
+              + ". We ask your skill level (1 to 5) to build balanced teams.")
     bullet(d, [("Bring ", True), ("a laptop, a charger, and a short power bar if you have one. Outlets are shared.", False)])
     bullet(d, [("Environment: ", True), ("use a work or school environment only if your organization allows it. No environment? Sign up for the free Power Apps Developer Plan (aka.ms/PowerAppsDevPlan). Organizers have a backup lab.", False)])
     h(d, "In the room", 3)
-    bullet(d, [("Food: ", True), ("breakfast and lunch are provided, and coffee is on site. Tell us about dietary needs at check-in.", False)])
+    bullet(d, [("Food: ", True), ("coffee and Tim Hortons donuts in the morning, and Egg Club sandwiches for lunch. Tell us about dietary needs at check-in.", False)])
     bullet(d, [("Wi-Fi: ", True), ("details are on the whiteboard. A backup hotspot is available.", False)])
     bullet(d, [("Help: ", True), ("mentors walk the room all day, so ask early. " + help_hosts, False)])
     bullet(d, [("Photos: ", True), ("we photograph the demos and the closing. Tell a volunteer if you prefer not to appear.", False)])

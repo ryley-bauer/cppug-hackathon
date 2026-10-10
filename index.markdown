@@ -181,7 +181,7 @@ hero:
 
 <section id="sponsors" class="site-section" data-aos="fade-up">
     <h2>Thank You to Our Sponsors</h2>
-    <p>Microsoft Calgary hosts the hackathon and provides the PPCC26 passes. Thank you to our sponsors: Bauer Automate, and Egg Club (downtown location) for the lunch sandwiches.</p>
+    <p>Microsoft Calgary hosts the hackathon and provides the PPCC26 passes. Thank you to our sponsors: Bauer Automate for the morning coffee and donuts, and Egg Club (downtown location) for the lunch sandwiches.</p>
     <div class="sponsor-logos" style="display: flex; gap: 2rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center;">
         <a href="https://www.microsoft.com/" target="_blank" rel="noopener" title="Microsoft: venue host and PPCC26 passes">
             <img src="{{ '/assets/images/sponsors/microsoft.svg' | relative_url }}" alt="Microsoft Logo" style="height: 40px;" loading="lazy">
