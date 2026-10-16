@@ -14,7 +14,7 @@ The Calgary Power Platform User Group (CPPUG) logo intro: a 25 second drive down
 
 - They run on a script inside the file. Open one directly in a browser, or embed it with `<object>`, `<iframe>` or inline.
 - An `<img>` tag does not run scripts, so it shows a blank first frame. Use the GIF or the WebM there.
-- They play on their own, pause 3 seconds on the logo, and loop. If the viewer asks for reduced motion, they show the final logo.
+- They play on their own, pause 3 seconds on the logo, and loop. Add `?loop=0` to the file address to play once and stay on the logo. If the viewer asks for reduced motion, they show the final logo.
 - They make no network requests.
 
 ## Icons

@@ -3,7 +3,7 @@
 The main CPPUG site at https://cppug.ca is a Cloudflare Worker named `cppug-site` that serves `index.html`. Its main button links to this hackathon site at https://hackathon.cppug.ca.
 
 - `index.html`: the page. Edit this file.
-- The hero logo is the animated `assets/images/logos/cppug-intro.svg` on the hackathon site. It plays once (25 seconds), stops on the logo, and respects reduced-motion settings.
+- The hero logo is the animated `assets/images/logos/cppug-intro/cppug-intro-16x9.svg?loop=0` on the hackathon site. It plays once (25 seconds), stops on the logo, and respects reduced-motion settings.
 - `build.py`: rebuilds `worker.js` from `index.html` (run `python cppug-site/build.py`).
 - `worker.js`: the deployed Worker. It embeds `index.html`, redirects `www.cppug.ca` to `cppug.ca`, and redirects `cppug.ca/hackathon` to `hackathon.cppug.ca`.
 

@@ -359,7 +359,7 @@ var ICONS = [{"name":"powerapps","vw":96,"vh":96,"markup":" <g> <g> <path data-l
 
 (function () {
   var hook = window.__cppug_a, idleSince = 0, reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
+  if (reduced || new URLSearchParams(location.search).get('loop') === '0') return;
   setInterval(function () {
     if (hook.state() === 'idle') { idleSince = idleSince || Date.now(); if (Date.now() - idleSince > 3000) { idleSince = 0; hook.replay(); } } else idleSince = 0;
   }, 250);
