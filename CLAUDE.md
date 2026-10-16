@@ -29,6 +29,17 @@ See `docs/README.md` for the file list. Key rules:
 - The Judge Form import file stays plain text on purpose (Microsoft Forms Quick import).
 - There are two public downloads: the Participant Pack (exactly 6 pages, for duplex printing) and the Volunteer and Judge Pack (3 pages). After you change either one, check the page count and export a new PDF to `assets/downloads/`.
 
+## Saving docs to SharePoint (automatic)
+
+Do not upload files to SharePoint by hand. Merging to `main` does it for you.
+
+- The workflow `.github/workflows/publish-sharepoint.yml` copies `docs/` and `assets/downloads/` to `CPPUG - Documents/Hackathon/Repo sync/` on the CPPUG SharePoint site. It runs on every push to `main` that touches those folders, and by hand from the Actions tab.
+- The copy is one way and overwrites every file. Edit the file in the repo. Edits made to the SharePoint copy are lost on the next run.
+- It signs in through a federated credential on the Entra app `cppug-hackathon-docs-ci` (CPPUG tenant), so the repo holds no secret. The settings are the repo variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, `SHAREPOINT_HOSTNAME`, `SHAREPOINT_SITE_PATH`, and `SHAREPOINT_DEST_FOLDER`.
+- The app can write to the whole CPPUG site, so the workflow only ever writes under `Repo sync/`. Never point `SHAREPOINT_DEST_FOLDER` at `Team (internal)` or `Print pack`. Internal team documents stay in SharePoint and never come back to this repo.
+- The credential trusts only this repo (`ryley-bauer/cppug-hackathon`) on the `main` branch. If the repo moves or is renamed, add a new federated credential for the new name before the next run.
+- Each file must stay under 4 MB. A 403 error on upload means the site grant for the app is missing.
+
 ## Writing rules
 
 - Plain language, active voice, short sentences. Define every acronym on first use.

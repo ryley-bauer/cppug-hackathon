@@ -1,0 +1,71 @@
+name: Publish docs to SharePoint
+
+# One-way copy of docs/ and assets/downloads/ to the CPPUG SharePoint site.
+# Signs in with a federated credential (OIDC). The repo stores no secret.
+# Files are overwritten on every run, so edits made in SharePoint under the
+# destination folder are lost. Edit the repo, not the copy.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "assets/downloads/**"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: publish-sharepoint
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Upload to SharePoint
+        env:
+          HOST: ${{ vars.SHAREPOINT_HOSTNAME }}
+          SITE_PATH: ${{ vars.SHAREPOINT_SITE_PATH }}
+          DEST: ${{ vars.SHAREPOINT_DEST_FOLDER }}
+        run: |
+          set -euo pipefail
+          TOKEN=$(az account get-access-token --resource https://graph.microsoft.com --query accessToken -o tsv)
+          echo "::add-mask::$TOKEN"
+          GRAPH=https://graph.microsoft.com/v1.0
+
+          SITE_ID=$(curl -sf -H "Authorization: Bearer $TOKEN" "$GRAPH/sites/$HOST:$SITE_PATH?\$select=id" | jq -r .id)
+
+          # The site's default drive is the "Shared Documents" library.
+          REL="${DEST#Shared Documents/}"
+
+          # ponytail: simple PUT caps at 4 MB per file. Use an upload session if a file grows past it.
+          find docs assets/downloads -type f | while IFS= read -r f; do
+            size=$(stat -c %s "$f")
+            if [ "$size" -gt 4000000 ]; then
+              echo "::error file=$f::larger than 4 MB, simple upload cannot send it"
+              exit 1
+            fi
+            path=$(printf '%s/%s' "$REL" "$f" | jq -sRr @uri | sed 's/%2F/\//g')
+            code=$(curl -s -o /tmp/resp -w '%{http_code}' -X PUT \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary @"$f" \
+              "$GRAPH/sites/$SITE_ID/drive/root:/$path:/content")
+            if [ "$code" != "200" ] && [ "$code" != "201" ]; then
+              echo "::error file=$f::upload failed with HTTP $code (403 means the site grant is missing)"
+              cat /tmp/resp
+              exit 1
+            fi
+            echo "uploaded $f"
+          done
