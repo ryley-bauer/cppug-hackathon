@@ -21,6 +21,7 @@ a { color: inherit; }
 h1, h2 { font-family: 'Norwester', 'Trebuchet MS', sans-serif; font-weight: 400; letter-spacing: .01em; margin: 0 0 .5rem; }
 .hero { background: #000; color: #fff; text-align: center; padding: 3.5rem 1rem 4rem; }
 .hero img { width: min(320px, 70vw); height: auto; margin: 0 auto 1.5rem; display: block; }
+.hero .logo-anim { width: min(560px, 92vw); aspect-ratio: 16 / 9; border: 0; margin: 0 auto 1.5rem; display: block; background: #000; }
 .hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); }
 .hero p { color: var(--lightblue); font-size: 1.2rem; margin: 0 auto 2rem; max-width: 40rem; }
 .btn { display: inline-block; margin: .4rem; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; text-decoration: none; border: 2px solid var(--yellow); }
@@ -44,7 +45,7 @@ footer a { color: var(--lightblue); }
 </head>
 <body>
 <header class="hero">
-  <img src="https://hackathon.cppug.ca/assets/images/logos/cppug-logo-white.png" alt="Calgary Power Platform User Group">
+  <iframe class="logo-anim" src="/cppug-intro.svg" title="Calgary Power Platform User Group logo animation. It plays once and stops on the logo." loading="eager"></iframe>
   <h1>Calgary Power Platform User Group</h1>
   <p>Learn, connect, and build with Microsoft Power Platform. Everyone is welcome, from first app to expert.</p>
   <a class="btn primary" href="https://hackathon.cppug.ca/">CPPUG Hackathon</a>
